@@ -21,10 +21,13 @@ typedef struct request_line{
 int read_request_line(const int client_socket, request_line* dest){
     int status;
     dest->method = read_until_char(client_socket, &dest->method_len, ' ', &status);
+    if(status != READ_OK) return -1;
     dest->method[dest->method_len - 1] = '\0';
     dest->uri = read_until_char(client_socket, &dest->uri_len, ' ', &status);
+    if(status != READ_OK) return -1;
     dest->uri[dest->uri_len - 1] = '\0';
     dest->version = read_until_char(client_socket, &dest->verison_len, '\n', &status);
+    if(status != READ_OK) return -1;
     dest->version[dest->verison_len - 1] = '\0';
     return 0;     
 }

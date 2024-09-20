@@ -1,2 +1,2 @@
 all: 
-	gcc src/server.c -o serv
+	gcc src/main.c -o serv

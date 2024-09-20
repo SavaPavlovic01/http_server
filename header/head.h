@@ -79,7 +79,7 @@ header_entry* read_header(const int client_socket){
                 printf("MALFORMED HTTP REQUEST\n");
                 return NULL;
             } else{
-                APPEND(header_list_head, cur_list_elem, cur_header, header_val);
+                APPEND(header_list_head, cur_list_elem, cur_header, header_val, header_entry);
             }
         }
 
